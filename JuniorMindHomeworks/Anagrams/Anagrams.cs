@@ -22,11 +22,16 @@ namespace Anagrams
         public int returnNoOfAnagrams(String word)
 
         {
-            foreach (char character in word.ToCharArray())
+            int numitor = 1;
+            ArrayList chars = new ArrayList();
+
+            foreach (char character in chars)
 
             {
-
+                numitor*=calculateFactorial(returnOccurencies(character, word));
             }
+
+            return calculateFactorial(word.Length) / numitor;
 
         }
         [TestMethod]
