@@ -7,15 +7,21 @@ namespace Excel
     public class Excel
     {
         [TestMethod]
-        public void ExcelTest_01()
+        public void ExcelTest_A()
         {
             Assert.AreEqual('A',returnColumnLetters(1));
         }
         [TestMethod]
-        public void ExcelTest_02()
+        public void ExcelTest_Z()
         {
             Assert.AreEqual('Z',returnColumnLetters(26));
         }
+        [TestMethod]
+        public void ExcelTest_AA()
+        {
+            Assert.AreEqual('AA', returnColumnLetters(27));
+        }
+
         public char returnColumnLetters(int number)
         {
             char[] chars = new char[26];
