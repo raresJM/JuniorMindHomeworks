@@ -1,20 +1,34 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Anagrams
 {
     [TestClass]
     public class Anagrams
     {
-        //        [TestMethod]
-        //        public void Test_ABC()
-        //        {
-        //           Assert.AreEqual(6,returnNoOfAnagrams("ABC"));
-        //        }
-        //        public int returnNoOfAnagrams(String word)
-        //        {
-        //
-        //        }
+
+        [TestMethod]
+
+        public void Test_ABC()
+
+        {
+
+            Assert.AreEqual(6,returnNoOfAnagrams("ABC"));
+
+        }
+
+        public int returnNoOfAnagrams(String word)
+
+        {
+            foreach (char character in word.ToCharArray())
+
+            {
+
+            }
+
+        }
         [TestMethod]
         public void Test_Factorial()
         {
@@ -40,15 +54,21 @@ namespace Anagrams
         public int returnOccurencies(char c, String word)
         {
             int result = 0;
-            char[] chars = word.ToCharArray();
-            foreach (char character in chars)
+            ArrayList chars = new ArrayList();
+            chars.AddRange(word.ToCharArray());
+
+            for (int i = 0; i< chars.Count; i++)
             {
-                if (character == c) {
+                if (chars[i].Equals(c)) {
+                    if (result > 1) {
+                        chars.RemoveAt(i);
+                    }
                     result++;
                 }
             }
             return result;
         }
+
     }
 }
 
