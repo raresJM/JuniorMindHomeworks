@@ -29,6 +29,13 @@ namespace Anagrams
             }
             return number * calculateFactorial(number - 1);
         }
+
+
+        [TestMethod]
+        public void Test_ReturnOccurencies()
+        {
+            Assert.AreEqual(1,Test_ReturnOccurencies("a"));
+        }
     }
 }
 
