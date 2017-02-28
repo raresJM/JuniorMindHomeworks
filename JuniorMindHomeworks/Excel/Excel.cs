@@ -19,7 +19,7 @@ namespace Excel
         [TestMethod]
         public void ExcelTest_AA()
         {
-            Assert.AreEqual('AA', returnColumnLetters(27));
+            Assert.AreEqual("AA", returnColumnLetters(27));
         }
 
         public char returnColumnLetters(int number)
@@ -30,6 +30,17 @@ namespace Excel
                 chars[i] = (char)('A' + i);
             }
             return chars[number-1];         
+        }
+        public String convertDecimalTo26Base(int columnNumber)
+        {
+            String result = "";
+            while (columnNumber != 0)
+            {
+                result += returnColumnLetters(columnNumber % 26);
+                columnNumber = columnNumber / 26;
+            }
+
+            return result;
         }
     }
 }
