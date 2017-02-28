@@ -1,0 +1,5 @@
+D:\jm\JuniorMindHomeworks\TenToTwoConversion\bin\Debug\TenToTwoConversion.dll
+D:\jm\JuniorMindHomeworks\TenToTwoConversion\bin\Debug\TenToTwoConversion.pdb
+D:\jm\JuniorMindHomeworks\TenToTwoConversion\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\jm\JuniorMindHomeworks\TenToTwoConversion\obj\Debug\TenToTwoConversion.dll
+D:\jm\JuniorMindHomeworks\TenToTwoConversion\obj\Debug\TenToTwoConversion.pdb

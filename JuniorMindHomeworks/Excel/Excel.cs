@@ -9,12 +9,12 @@ namespace Excel
         [TestMethod]
         public void ExcelTest_A()
         {
-            Assert.AreEqual('A',returnColumnLetters(1));
+            Assert.AreEqual("A", convertDecimalTo26Base(1));
         }
         [TestMethod]
         public void ExcelTest_Z()
         {
-            Assert.AreEqual('Z',returnColumnLetters(26));
+            Assert.AreEqual("Z", convertDecimalTo26Base(26));
         }
         [TestMethod]
         public void ExcelTest_AA()
@@ -22,30 +22,47 @@ namespace Excel
             Assert.AreEqual("AA", convertDecimalTo26Base(27));
         }
         [TestMethod]
-        public void ExcelTest_AB()
+        public void ExcelTest_AZ()
         {
-            Assert.AreEqual("AB", convertDecimalTo26Base(28));
+            Assert.AreEqual("AZ", convertDecimalTo26Base(52));
         }
 
-        public char returnColumnLetters(int number)
+        [TestMethod]
+        public void ExcelTest_ZZ()
         {
-            char[] chars = new char[26];
-            for (int i = 0; i < 26; i++)
-            {
-                chars[i] = (char)('A' + i);
-            }
-            return chars[number-1];         
+            Assert.AreEqual("ZZ", convertDecimalTo26Base(702));
+        }
+        [TestMethod]
+        public void ExcelTest_AAA()
+        {
+            Assert.AreEqual("AAA", convertDecimalTo26Base(703));
+        }
+        [TestMethod]
+        public void ExcelTest_ABC()
+        {
+            Assert.AreEqual("ABC", convertDecimalTo26Base(731));
+        }
+        [TestMethod]
+        public void ExcelTest_ABZ()
+        {
+            Assert.AreEqual("ABZ", convertDecimalTo26Base(754));
+        }
+        [TestMethod]
+        public void ExcelTest_AMJ()
+        {
+            Assert.AreEqual("AMJ", convertDecimalTo26Base(1024));
         }
         public String convertDecimalTo26Base(int columnNumber)
         {
             String result = "";
-            while (columnNumber != 0)
+            while (columnNumber > 0)
             {
-                result = returnColumnLetters(columnNumber % 26) + result;
+                columnNumber--;
+                result = (char)('A' + columnNumber % 26) + result;
                 columnNumber = columnNumber / 26;
             }
-
             return result;
         }
+            
+        }
     }
-}
