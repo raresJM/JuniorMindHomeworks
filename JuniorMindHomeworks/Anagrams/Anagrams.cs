@@ -34,7 +34,12 @@ namespace Anagrams
         [TestMethod]
         public void Test_ReturnOccurencies()
         {
-            Assert.AreEqual(1,Test_ReturnOccurencies("a"));
+            Assert.AreEqual(1,returnOccurencies('a'));
+        }
+
+        public int returnOccurencies(char c)
+        {
+
         }
     }
 }
