@@ -11,5 +11,9 @@ namespace Anagrams
         {
             Assert.AreEqual(6,returnNoOfAnagrams("ABC"));
         }
+        public int returnNoOfAnagrams(String word)
+        {
+
+        }
     }
 }
