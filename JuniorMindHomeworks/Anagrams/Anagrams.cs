@@ -34,12 +34,20 @@ namespace Anagrams
         [TestMethod]
         public void Test_ReturnOccurencies()
         {
-            Assert.AreEqual(1,returnOccurencies('a'));
+            Assert.AreEqual(1,returnOccurencies('a', "abc"));
         }
 
-        public int returnOccurencies(char c)
+        public int returnOccurencies(char c, String word)
         {
-
+            int result = 0;
+            char[] chars = word.ToCharArray();
+            foreach (char character in chars)
+            {
+                if (character == c) {
+                    result++;
+                }
+            }
+            return result;
         }
     }
 }
