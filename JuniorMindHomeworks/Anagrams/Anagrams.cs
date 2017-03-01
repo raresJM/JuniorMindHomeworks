@@ -10,30 +10,45 @@ namespace Anagrams
     {
 
         [TestMethod]
-
-        public void Test_ABC()
+        public void AnagramTest_ABC()
 
         {
-
             Assert.AreEqual(6,returnNoOfAnagrams("ABC"));
+        }
 
+        [TestMethod]
+        public void AnagramTest_AA()
+
+        {
+            Assert.AreEqual(1, returnNoOfAnagrams("AA"));
+        }
+
+        [TestMethod]
+        public void AnagramTest_AAA()
+
+        {
+            Assert.AreEqual(1, returnNoOfAnagrams("AAA"));
+        }
+
+        [TestMethod]
+        public void AnagramTest_ABCDA()
+
+        {
+            Assert.AreEqual(60, returnNoOfAnagrams("ABCDA"));
+        }
+
+        [TestMethod]
+        public void AnagramTest_ABCDAAAAAAAA()
+
+        {
+            Assert.AreEqual(1320, returnNoOfAnagrams("ABCDAAAAAAAA"));
         }
 
         public int returnNoOfAnagrams(String word)
-
         {
-            int numitor = 1;
-            ArrayList chars = new ArrayList();
-
-            foreach (char character in chars)
-
-            {
-                numitor*=calculateFactorial(returnOccurencies(character, word));
-            }
-
-            return calculateFactorial(word.Length) / numitor;
-
+            return calculateFactorial(word.Length) / calculateDenominator(word);
         }
+
         [TestMethod]
         public void Test_Factorial()
         {
@@ -49,31 +64,28 @@ namespace Anagrams
             return number * calculateFactorial(number - 1);
         }
 
-
-        [TestMethod]
-        public void Test_ReturnOccurencies()
+        public int calculateDenominator(String word)
         {
-            Assert.AreEqual(1,returnOccurencies('a', "abc"));
-        }
+            int count = 1;
+            int denominator = 1;
 
-        public int returnOccurencies(char c, String word)
-        {
-            int result = 0;
-            ArrayList chars = new ArrayList();
-            chars.AddRange(word.ToCharArray());
+            char[] chars = word.ToCharArray();
+            Array.Sort(chars);
 
-            for (int i = 0; i< chars.Count; i++)
+            for (int i = 0; i< chars.Length-1; i++)
             {
-                if (chars[i].Equals(c)) {
-                    if (result > 1) {
-                        chars.RemoveAt(i);
-                    }
-                    result++;
+                if (chars[i] == chars[i + 1])
+                {
+                    count++;
+                    denominator *= count;
+                }
+                else
+                {
+                    count = 1;
                 }
             }
-            return result;
+            return denominator;
         }
-
     }
 }
 
