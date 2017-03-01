@@ -10,18 +10,18 @@ namespace Loto
         [TestMethod]
         public void LotoTest_6_49()
         {
-            Assert.AreEqual(13983816, kOfn(6,49));
+            Assert.AreEqual(13983816, kOfN(6,49));
         }
         [TestMethod]
         public void LotoTest_5_40()
         {
-            Assert.AreEqual(658008, kOfn(5,40));
+            Assert.AreEqual(658008, kOfN(5,40));
         }
-        public BigInteger sixOffortyNine() {
+        public BigInteger kOfN(int k, int n) {
             BigInteger result = new BigInteger(0);
             result = BigInteger.Divide(
-                calculateFactorial(49),
-                (BigInteger.Multiply(calculateFactorial(6),calculateFactorial(49 - 6))));
+                calculateFactorial(n),
+                (BigInteger.Multiply(calculateFactorial(k),calculateFactorial(n - k))));
             return result;
         }
 
