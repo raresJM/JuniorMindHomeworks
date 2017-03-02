@@ -10,24 +10,36 @@ namespace Loto
         [TestMethod]
         public void LotoTest_6_49()
         {
-            Assert.AreEqual(Decimal.Divide(1,13983816), lotoOdds(6, 49));
+            Assert.AreEqual(Decimal.Divide(1,13983816), Decimal.Divide(1, combinations(6,49)));
+        }
+
+        [TestMethod]
+        public void LotoTest_5_40()
+        {
+            Assert.AreEqual(Decimal.Divide(1, 658008), Decimal.Divide(1, combinations(5, 40)));
         }
 
         [TestMethod]
         public void LotoTest_6_49_5_Numbers()
         {
-            Assert.AreEqual(Decimal.Divide(1, (Decimal)54200.8), lotoOddsCategoryOne(6, 49));
+            Assert.AreEqual(Decimal.Divide(258, combinations(6,49)), lotoOddsCategoryNumbers(6, 49, 5));
         }
 
-
-        [TestMethod]
-        public void LotoTest_5_40()
+        public Decimal lotoOddsCategoryNumbers(int k, int n, int categoryNumbers)
         {
-            Assert.AreEqual(Decimal.Divide(1,658008), lotoOdds(5,40));
+            return
+                Decimal.Divide
+                (
+                    Decimal.Multiply(combinations(categoryNumbers, k), combinations(1, n - k)),
+                    combinations(k, n)
+                );
         }
 
-        public Decimal lotoOdds(int k, int n) {
-            return calculateFactorial(k) / simplifiedFactorial(n,k);
+
+
+
+        public Decimal combinations(int k, int n) {
+            return  simplifiedFactorial(n,k) / calculateFactorial(k);
         }
 
         [TestMethod]
