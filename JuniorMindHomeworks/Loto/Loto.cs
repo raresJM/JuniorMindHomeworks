@@ -12,6 +12,14 @@ namespace Loto
         {
             Assert.AreEqual(Decimal.Divide(1,13983816), lotoOdds(6, 49));
         }
+
+        [TestMethod]
+        public void LotoTest_6_49_5_Numbers()
+        {
+            Assert.AreEqual(Decimal.Divide(1, (Decimal)54200.8), lotoOddsCategoryOne(6, 49));
+        }
+
+
         [TestMethod]
         public void LotoTest_5_40()
         {
