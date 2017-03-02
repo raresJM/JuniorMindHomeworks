@@ -10,21 +10,17 @@ namespace Loto
         [TestMethod]
         public void LotoTest_6_49()
         {
-            Assert.AreEqual(13983816, kOfN(6,49));
+            Assert.AreEqual(Decimal.Divide(1,13983816), lotoOdds(6, 49));
         }
         [TestMethod]
         public void LotoTest_5_40()
         {
-            Assert.AreEqual(658008, kOfN(5,40));
-        }
-        public BigInteger kOfN(int k, int n) {
-            BigInteger result = new BigInteger(0);
-            result = BigInteger.Divide(
-                calculateFactorial(n),
-                (BigInteger.Multiply(calculateFactorial(k),calculateFactorial(n - k))));
-            return result;
+            Assert.AreEqual(Decimal.Divide(1,658008), lotoOdds(5,40));
         }
 
+        public Decimal lotoOdds(int k, int n) {
+            return calculateFactorial(k) / simplifiedFactorial(n,k);
+        }
 
         [TestMethod]
         public void Test_Factorial()
@@ -32,15 +28,24 @@ namespace Loto
             Assert.AreEqual(6, calculateFactorial(3));
         }
 
-        public BigInteger calculateFactorial(int number)
+        public Decimal calculateFactorial(int number)
         {
-            BigInteger result = new BigInteger(1);
+            Decimal result = 1;
             for (int i = 1; i <= number; i++)
             {
-                result = BigInteger.Multiply(result, i);
+                result= Decimal.Multiply(result,i);
             }
             return result;
         }
 
+        public Decimal simplifiedFactorial(int n, int k)
+        {
+            Decimal result = 1;
+            for (int i = n; i > (n - k); i--)
+            {
+                result *= i;
+            }
+            return result;
+        }
     }
 }
