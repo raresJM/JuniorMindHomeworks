@@ -42,17 +42,28 @@ namespace Loto
             }
             return result;
         }
+        [TestMethod]
+        public void LotoTest_Combinations_6_6()
+        {
+            Assert.AreEqual(1,combinations(6,6));
+        }
+        [TestMethod]
+        public void LotoTest_Combinations_43_0()
+        {
+            Assert.AreEqual(1, combinations(0, 43));
+        }
+
 
         [TestMethod]
         public void LotoTest_6_49()
         {
-            Assert.AreEqual(Decimal.Divide(1,13983816), Decimal.Divide(1, combinations(6,49)));
+            Assert.AreEqual(Decimal.Divide(1,13983816), lotoOddsCategoryNumbers(6,49,6));
         }
 
         [TestMethod]
         public void LotoTest_5_40()
         {
-            Assert.AreEqual(Decimal.Divide(1, 658008), Decimal.Divide(1, combinations(5, 40)));
+            Assert.AreEqual(Decimal.Divide(1, 658008), lotoOddsCategoryNumbers(5, 40, 5));
         }
 
         [TestMethod]
