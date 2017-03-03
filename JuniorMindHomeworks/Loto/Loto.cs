@@ -8,6 +8,32 @@ namespace Loto
     public class Loto
     {
         [TestMethod]
+        public void Test_Factorial()
+        {
+            Assert.AreEqual(6, calculateFactorial(3));
+        }
+
+        public Decimal calculateFactorial(int number)
+        {
+            Decimal result = 1;
+            for (int i = 1; i <= number; i++)
+            {
+                result = Decimal.Multiply(result, i);
+            }
+            return result;
+        }
+
+        public Decimal simplifiedFactorial(int n, int k)
+        {
+            Decimal result = 1;
+            for (int i = n; i > (n - k); i--)
+            {
+                result *= i;
+            }
+            return result;
+        }
+
+        [TestMethod]
         public void LotoTest_6_49()
         {
             Assert.AreEqual(Decimal.Divide(1,13983816), Decimal.Divide(1, combinations(6,49)));
@@ -61,32 +87,6 @@ namespace Loto
         
         public Decimal combinations(int k, int n) {
             return  simplifiedFactorial(n,k) / calculateFactorial(k);
-        }
-
-        [TestMethod]
-        public void Test_Factorial()
-        {
-            Assert.AreEqual(6, calculateFactorial(3));
-        }
-
-        public Decimal calculateFactorial(int number)
-        {
-            Decimal result = 1;
-            for (int i = 1; i <= number; i++)
-            {
-                result= Decimal.Multiply(result,i);
-            }
-            return result;
-        }
-
-        public Decimal simplifiedFactorial(int n, int k)
-        {
-            Decimal result = 1;
-            for (int i = n; i > (n - k); i--)
-            {
-                result *= i;
-            }
-            return result;
         }
     }
 }
