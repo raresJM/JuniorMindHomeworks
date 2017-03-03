@@ -8,7 +8,17 @@ namespace Loto
     public class Loto
     {
         [TestMethod]
-        public void LotoTest_Factorial()
+        public void LotoTest_Factorial_0()
+        {
+            Assert.AreEqual(1, calculateFactorial(0));
+        }
+        [TestMethod]
+        public void LotoTest_Factorial_1()
+        {
+            Assert.AreEqual(1, calculateFactorial(1));
+        }
+        [TestMethod]
+        public void LotoTest_Factorial_3()
         {
             Assert.AreEqual(6, calculateFactorial(3));
         }
@@ -59,34 +69,16 @@ namespace Loto
 
         public Decimal lotoOddsCategoryNumbers(int k, int n, int categoryNumbers)
         {
-            int categoryValue = 0;
-            switch (categoryNumbers)
-            {
-                case 5:
-                    {
-                        categoryValue = 1; break;
-                    }
-                case 4:
-                    {
-                        categoryValue = 2; break;
-                    }
-                default:
-                    {
-                        //throw exception
-                        break;  
-                    } 
-            }
-
             return
                     Decimal.Divide
                     (
-                    Decimal.Multiply(combinations(categoryNumbers, k), combinations(categoryValue, n - k)),
+                    Decimal.Multiply(combinations(categoryNumbers, k), combinations(k-categoryNumbers, n - k)),
                     combinations(k, n)
                     );
         }
         
         public Decimal combinations(int k, int n) {
-            return  simplifiedFactorial(n,k) / calculateFactorial(k);
+            return Decimal.Divide(simplifiedFactorial(n,k) , calculateFactorial(k));
         }
     }
 }
