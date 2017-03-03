@@ -8,7 +8,7 @@ namespace Loto
     public class Loto
     {
         [TestMethod]
-        public void Test_Factorial()
+        public void LotoTest_Factorial()
         {
             Assert.AreEqual(6, calculateFactorial(3));
         }
