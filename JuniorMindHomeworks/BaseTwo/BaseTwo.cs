@@ -11,15 +11,14 @@ namespace BaseTwo
         [TestMethod]
         public void Test_2_10()
         {
-            Byte[] result = {1,0};
+            byte[] result = {1,0};
             Assert.AreEqual(result, DecimalToBaseTwo(2));
         }
-        public byte[] DecimalToBaseTwo(int number) {
-            List<Byte> result = new List<Byte>();
-            result.Add(1);
-            result.Add(0);
-
-            return result.ToArray();  
+        public byte[] DecimalToBaseTwo(int number)
+        {
+            byte[] result = {1,0};
+            
+            return result;  
         }
     }
 }
