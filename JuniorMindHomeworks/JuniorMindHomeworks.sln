@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anagrams", "Anagrams\Anagra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loto", "Loto\Loto.csproj", "{1E945565-8DC8-486D-8CE1-DC125C8C6CE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseTwo", "BaseTwo\BaseTwo.csproj", "{CA629113-C23F-42C1-9E0E-4DAED6DCFB2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1E945565-8DC8-486D-8CE1-DC125C8C6CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E945565-8DC8-486D-8CE1-DC125C8C6CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E945565-8DC8-486D-8CE1-DC125C8C6CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA629113-C23F-42C1-9E0E-4DAED6DCFB2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA629113-C23F-42C1-9E0E-4DAED6DCFB2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA629113-C23F-42C1-9E0E-4DAED6DCFB2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA629113-C23F-42C1-9E0E-4DAED6DCFB2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
