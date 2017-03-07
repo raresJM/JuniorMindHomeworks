@@ -86,23 +86,20 @@ namespace BaseTwo
             List<byte> result = new List<byte>();
             List<byte> number1AsBinary = DecimalToBaseTwo(number1);
             List<byte> number2AsBinary = DecimalToBaseTwo(number2);
-
             switch (op)
             {
-                case "XOR": result = XOr(ref number1AsBinary, ref number2AsBinary);break;
-                case "OR": result = Or(ref number1AsBinary, ref number2AsBinary);break;
-                case "AND": result = And(ref number1AsBinary, ref number2AsBinary);break;
+                case "XOR": result = XOr(number1AsBinary, number2AsBinary);break;
+                case "OR": result = Or(number1AsBinary, number2AsBinary);break;
+                case "AND": result = And(number1AsBinary, number2AsBinary);break;
                 default: break;
             }
             return result;
         }
 
-        public List<byte> XOr(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
+        public List<byte> XOr(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
-
-            AddFrontZeroes(ref number1AsBinary, ref number2AsBinary);
-
+            AddFrontZeroes(number1AsBinary, number2AsBinary);
             int length = number1AsBinary.Count;
             for (int i = 0; i < length; i++)
             {
@@ -114,7 +111,6 @@ namespace BaseTwo
                     ) ? (byte)1 : (byte)0;
                 result.Insert(i, valueToInsert);
             }
-
             RemoveLeadingZeroes(result);
             return result;
         }
@@ -134,12 +130,10 @@ namespace BaseTwo
             }
         }
 
-        public List<byte> Or(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
+        public List<byte> Or(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
-
-            AddFrontZeroes(ref number1AsBinary, ref number2AsBinary);
-
+            AddFrontZeroes(number1AsBinary, number2AsBinary);
             int length = number1AsBinary.Count;
             for (int i = 0; i < length; i++)
             {
@@ -149,7 +143,7 @@ namespace BaseTwo
             return result;
         }
 
-        private void AddFrontZeroes(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
+        private void AddFrontZeroes(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             if (number1AsBinary.Count > number2AsBinary.Count)
             {
@@ -167,12 +161,9 @@ namespace BaseTwo
             }
         }
 
-
-
-        public List<byte> And(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
+        public List<byte> And(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
-
             int length = number1AsBinary.Count;
             if (number1AsBinary.Count != number2AsBinary.Count)
             {
