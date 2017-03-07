@@ -74,6 +74,12 @@ namespace BaseTwo
             byte[] result = { 1 };
             CollectionAssert.AreEqual(result, XOr(2, 3));
         }
+        [TestMethod]
+        public void BaseTwoTest_XOR_2_2()
+        {
+            byte[] result = { 0 };
+            CollectionAssert.AreEqual(result, XOr(2, 2));
+        }
 
         public List<byte> XOr(int number1, int number2)
         {
