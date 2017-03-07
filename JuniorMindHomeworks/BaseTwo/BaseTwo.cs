@@ -96,7 +96,7 @@ namespace BaseTwo
             return result;
         }
 
-        public List<byte> XOr(List<byte> number1AsBinary, List<byte> number2AsBinary)
+        private List<byte> XOr(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
             EqualizeLengthWithFrontZeroes(number1AsBinary, number2AsBinary);
@@ -130,7 +130,7 @@ namespace BaseTwo
             }
         }
 
-        public List<byte> Or(List<byte> number1AsBinary, List<byte> number2AsBinary)
+        private List<byte> Or(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
             EqualizeLengthWithFrontZeroes(number1AsBinary, number2AsBinary);
@@ -161,7 +161,7 @@ namespace BaseTwo
             }
         }
 
-        public List<byte> And(List<byte> number1AsBinary, List<byte> number2AsBinary)
+        private List<byte> And(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
             int length = number1AsBinary.Count;
@@ -180,7 +180,7 @@ namespace BaseTwo
             return result;
         }
 
-        public List<byte> Not(int number)
+        private List<byte> Not(int number)
         {
             List<byte> result = new List<byte>();
             result = DecimalToBaseTwo(number);
@@ -198,7 +198,7 @@ namespace BaseTwo
             return result;
         }
 
-        public List<byte> DecimalToBaseTwo(int number)
+        private List<byte> DecimalToBaseTwo(int number)
         {
             List<byte> result = new List<byte>();
             if (number == 0)
