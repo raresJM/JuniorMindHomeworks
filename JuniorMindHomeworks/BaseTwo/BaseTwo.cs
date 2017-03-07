@@ -9,47 +9,49 @@ namespace BaseTwo
     public class BaseTwo
     {
         [TestMethod]
-        public void Test_2_10()
+        public void BaseTwoTest_2_10()
         {
             byte[] result = {1,0};
             CollectionAssert.AreEqual(result, DecimalToBaseTwo(2));
         }
         [TestMethod]
-        public void Test_3_11()
+        public void BaseTwoTest_3_11()
         {
             byte[] result = {1,1};
             CollectionAssert.AreEqual(result, DecimalToBaseTwo(3));
         }
         [TestMethod]
-        public void Test_NOT_2()
+        public void BaseTwoTest_NOT_2()
         {
             byte[] result = {0, 1};
             CollectionAssert.AreEqual(result, Not(2));
         }
         [TestMethod]
-        public void Test_NOT_0()
+        public void BaseTwoTest_NOT_0()
         {
             byte[] result = {1};
             CollectionAssert.AreEqual(result, Not(0));
         }
         [TestMethod]
-        public void Test_AND_2_2()
+        public void BaseTwoTest_AND_2_2()
         {
             byte[] result = { 1, 0 };
             CollectionAssert.AreEqual(result, And(2,2));
         }
         [TestMethod]
-        public void Test_AND_2_4()
+        public void BaseTwoTest_AND_2_4()
         {
-            byte[] result = { 0, 0, 0 };
+            byte[] result = { 0 };
             CollectionAssert.AreEqual(result, And(2, 4));
         }
 
         public List<byte> And(int number1, int number2)
         {
             List<byte> result = new List<byte>();
-            result.Insert(0, 1);
-            result.Insert(1, 0);
+            if (DecimalToBaseTwo(number1).Count != DecimalToBaseTwo(number2).Count)
+            {
+                result.Add(0);
+            }
             return result;
         }
 
