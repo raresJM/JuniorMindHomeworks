@@ -84,11 +84,36 @@ namespace BaseTwo
         public List<byte> XOr(int number1, int number2)
         {
             List<byte> result = new List<byte>();
-            result.Add(1);
+            List<byte> number1AsBinary = DecimalToBaseTwo(number1);
+            List<byte> number2AsBinary = DecimalToBaseTwo(number2);
+
+            AddFrontZeroes(ref number1AsBinary, ref number2AsBinary);
+
+            int length = number1AsBinary.Count;
+            for (int i = 0; i < length; i++)
+            {
+                byte valueToInsert = 
+                    (
+                    (1 == number1AsBinary[i] || 1 == number2AsBinary[i]) 
+                    &&
+                    (!(1 == number1AsBinary[i] && 1 == number2AsBinary[i]))
+                    ) ? (byte)1 : (byte)0;
+                result.Insert(i, valueToInsert);
+            }
+
+            for (int i = 0; i < result.Count - 1; i++)
+            {
+                if (result[i] == 0)
+                {
+                    result.RemoveAt(i);
+                }
+                else
+                {
+                    break;
+                }
+            }
             return result;
         }
-
-
 
         public List<byte> Or(int number1, int number2)
         {
