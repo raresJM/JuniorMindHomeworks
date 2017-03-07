@@ -11,8 +11,8 @@ namespace BaseTwo
         [TestMethod]
         public void Test_2_10()
         {
-            byte[] result = {1,0};
-            CollectionAssert.AreEqual(result, DecimalToBaseTwo(2));
+            byte[] result = {0};
+            CollectionAssert.AreEqual(result, DecimalToBaseTwo(0));
         }
         [TestMethod]
         public void Test_3_11()
@@ -36,8 +36,18 @@ namespace BaseTwo
         public List<byte> Not(int number)
         {
             List<byte> result = new List<byte>();
-            result.Insert(0, 0);
-            result.Insert(1, 1);
+            result = DecimalToBaseTwo(number);
+            for (int i = 0; i < result.Count; i++)
+            {
+                if (result[i] == 0)
+                {
+                    result[i] = 1;
+                }
+                else
+                {
+                    result[i] = 0;
+                }
+            }
             return result;
         }
 
@@ -46,10 +56,16 @@ namespace BaseTwo
         public List<byte> DecimalToBaseTwo(int number)
         {
             List<byte> result = new List<byte>();
-            while (number > 0)
+            if (number == 0)
             {
-                result.Insert(0, (byte)(number % 2));
-                number = number / 2;
+                result.Add(0);
+            }else
+            {
+                while (number > 0)
+                {
+                    result.Insert(0, (byte)(number % 2));
+                    number = number / 2;
+                }
             }
             return result;  
         }
