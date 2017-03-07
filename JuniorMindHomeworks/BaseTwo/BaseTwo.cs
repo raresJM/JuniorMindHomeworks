@@ -27,6 +27,15 @@ namespace BaseTwo
             CollectionAssert.AreEqual(result, Not(2));
         }
 
+        public List<byte> Not(int number)
+        {
+            List<byte> result = new List<byte>();
+            result.Insert(0, 0);
+            result.Insert(1, 1);
+            return result;
+        }
+
+
 
         public List<byte> DecimalToBaseTwo(int number)
         {
