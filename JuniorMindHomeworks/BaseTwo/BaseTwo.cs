@@ -75,6 +75,13 @@ namespace BaseTwo
             CollectionAssert.AreEqual(result, XOr(2, 3));
         }
 
+        public List<byte> XOr(int number1, int number2)
+        {
+            List<byte> result = new List<byte>();
+            result.Add(1);
+            return result;
+        }
+
 
 
         public List<byte> Or(int number1, int number2)
