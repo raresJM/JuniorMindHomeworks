@@ -62,29 +62,50 @@ namespace BaseTwo
             byte[] result = { 1, 1 };
             CollectionAssert.AreEqual(result, Or(2, 3));
         }
+        [TestMethod]
+        public void BaseTwoTest_OR_2_0()
+        {
+            byte[] result = { 1, 0 };
+            CollectionAssert.AreEqual(result, Or(2, 0));
+        }
 
         public List<byte> Or(int number1, int number2)
         {
             List<byte> result = new List<byte>();
             List<byte> number1AsBinary = DecimalToBaseTwo(number1);
             List<byte> number2AsBinary = DecimalToBaseTwo(number2);
-            int length = number1AsBinary.Count;
+
+            if (number1AsBinary.Count > number2AsBinary.Count)
             {
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < number1AsBinary.Count - number2AsBinary.Count; i++)
                 {
-                    if (1 == number1AsBinary[i] ||
-                        1 == number2AsBinary[i])
-                    {
-                        result.Insert(i, 1);
-                    }
-                    else
-                    {
-                        result.Insert(i, 0);
-                    }
+                    number2AsBinary.Insert(i, 0);
+                }
+            }
+            else if (number2AsBinary.Count > number1AsBinary.Count)
+            {
+                for (int i = 0; i < number2AsBinary.Count - number1AsBinary.Count; i++)
+                {
+                    number1AsBinary.Insert(i, 0);
+                }
+            }
+            int length = number1AsBinary.Count;
+            for (int i = 0; i < length; i++)
+            {
+                if (1 == number1AsBinary[i] ||      
+                    1 == number2AsBinary[i])
+                {
+                    result.Insert(i, 1);
+                }
+                else
+                {
+                    result.Insert(i, 0);
                 }
             }
             return result;
-        }
+    } 
+   
+        
 
 
         public List<byte> And(int number1, int number2)
