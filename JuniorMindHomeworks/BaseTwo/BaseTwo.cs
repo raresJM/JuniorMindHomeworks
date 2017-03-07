@@ -21,10 +21,15 @@ namespace BaseTwo
             CollectionAssert.AreEqual(result, DecimalToBaseTwo(3));
         }
 
-        public byte[] DecimalToBaseTwo(int number)
+        public List<byte> DecimalToBaseTwo(int number)
         {
-            byte[] result = {1,0};
-            
+            List<byte> result = new List<byte>();
+            while (number > 0)
+            {
+                result.Add((byte)(number % 2));
+                number = number / 2;
+            }
+
             return result;  
         }
     }
