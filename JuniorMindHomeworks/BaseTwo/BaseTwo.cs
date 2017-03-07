@@ -80,20 +80,13 @@ namespace BaseTwo
             int length = number1AsBinary.Count;
             for (int i = 0; i < length; i++)
             {
-                if (1 == number1AsBinary[i] ||
-                    1 == number2AsBinary[i])
-                {
-                    result.Insert(i, 1);
-                }
-                else
-                {
-                    result.Insert(i, 0);
-                }
+                byte valueToInsert = (1 == number1AsBinary[i] || 1 == number2AsBinary[i]) ? (byte)1 : (byte)0;
+                result.Insert(i, valueToInsert); 
             }
             return result;
         }
 
-        private static void AddFrontZeroes(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
+        private void AddFrontZeroes(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
         {
             if (number1AsBinary.Count > number2AsBinary.Count)
             {
@@ -127,15 +120,8 @@ namespace BaseTwo
             {
                 for (int i = 0; i < length; i++)
                 {
-                    if (1 == number1AsBinary[i] && 
-                        number1AsBinary[i] == number2AsBinary[i])
-                    {
-                        result.Insert(i, 1);
-                    }
-                    else
-                    {
-                        result.Insert(i, 0);
-                    }
+                    byte valueToInsert = (1 == number1AsBinary[i] && 1 == number2AsBinary[i]) ? (byte)1 : (byte)0;
+                    result.Insert(i, valueToInsert);
                 }
             }
             return result;
