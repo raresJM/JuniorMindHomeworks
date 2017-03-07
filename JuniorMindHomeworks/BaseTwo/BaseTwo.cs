@@ -17,9 +17,16 @@ namespace BaseTwo
         [TestMethod]
         public void Test_3_11()
         {
-            byte[] result = { 1, 1 };
+            byte[] result = {1,1};
             CollectionAssert.AreEqual(result, DecimalToBaseTwo(3));
         }
+        [TestMethod]
+        public void Test_NOT_2()
+        {
+            byte[] result = { 0, 1 };
+            CollectionAssert.AreEqual(result, Not(2));
+        }
+
 
         public List<byte> DecimalToBaseTwo(int number)
         {
@@ -29,7 +36,6 @@ namespace BaseTwo
                 result.Insert(0, (byte)(number % 2));
                 number = number / 2;
             }
-
             return result;  
         }
     }
