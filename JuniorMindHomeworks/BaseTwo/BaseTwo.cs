@@ -26,7 +26,7 @@ namespace BaseTwo
             List<byte> result = new List<byte>();
             while (number > 0)
             {
-                result.Add((byte)(number % 2));
+                result.Insert(0, (byte)(number % 2));
                 number = number / 2;
             }
 
