@@ -35,7 +35,7 @@ namespace BaseTwo
         [TestMethod]
         public void BaseTwoTest_AND_2_2()
         {
-            byte[] result = { 1, 0 };
+            byte[] result = {1, 0};
             CollectionAssert.AreEqual(result, And(2,2));
         }
         [TestMethod]
@@ -48,9 +48,27 @@ namespace BaseTwo
         public List<byte> And(int number1, int number2)
         {
             List<byte> result = new List<byte>();
-            if (DecimalToBaseTwo(number1).Count != DecimalToBaseTwo(number2).Count)
+            List<byte> number1AsBinary = DecimalToBaseTwo(number1);
+            List<byte> number2AsBinary = DecimalToBaseTwo(number2);
+            int length = number1AsBinary.Count;
+            if (number1AsBinary.Count != number2AsBinary.Count)
             {
                 result.Add(0);
+            }
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    if (1 == number1AsBinary[i] && 
+                        number1AsBinary[i] == number2AsBinary[i])
+                    {
+                        result.Insert(i, 1);
+                    }
+                    else
+                    {
+                        result.Insert(i, 0);
+                    }
+                }
             }
             return result;
         }
