@@ -36,71 +36,91 @@ namespace BaseTwo
         public void BaseTwoTest_AND_2_2()
         {
             byte[] result = {1, 0};
-            CollectionAssert.AreEqual(result, And(2,2));
+            CollectionAssert.AreEqual(result, BinaryOperations(2,"AND",2));
         }
         [TestMethod]
         public void BaseTwoTest_AND_2_4()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, And(2, 4));
+            CollectionAssert.AreEqual(result, BinaryOperations(2, "AND", 4));
         }
         [TestMethod]
         public void BaseTwoTest_AND_2_0()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, And(2, 0));
+            CollectionAssert.AreEqual(result, BinaryOperations(2, "AND", 0));
         }
         [TestMethod]
         public void BaseTwoTest_OR_2_2()
         {
             byte[] result = { 1, 0 };
-            CollectionAssert.AreEqual(result, Or(2, 2));
+            CollectionAssert.AreEqual(result, BinaryOperations(2, "OR", 2));
         }
         [TestMethod]
         public void BaseTwoTest_OR_2_3()
         {
             byte[] result = { 1, 1 };
-            CollectionAssert.AreEqual(result, Or(2, 3));
+            CollectionAssert.AreEqual(result, BinaryOperations(2, "OR", 3));
         }
         [TestMethod]
         public void BaseTwoTest_OR_2_0()
         {
             byte[] result = { 1, 0 };
-            CollectionAssert.AreEqual(result, Or(2, 0));
+            CollectionAssert.AreEqual(result, BinaryOperations(2, "OR", 0));
         }
         [TestMethod]
         public void BaseTwoTest_XOR_2_3()
         {
             byte[] result = { 1 };
-            CollectionAssert.AreEqual(result, XOr(2, 3));
+            CollectionAssert.AreEqual(result, BinaryOperations(2, "XOR", 3));
         }
         [TestMethod]
         public void BaseTwoTest_XOR_2_2()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, XOr(2, 2));
+            CollectionAssert.AreEqual(result, BinaryOperations(2, "XOR", 2));
         }
 
-        public List<byte> XOr(int number1, int number2)
+        public List<byte> BinaryOperations(int number1, String op, int number2)
         {
             List<byte> result = new List<byte>();
             List<byte> number1AsBinary = DecimalToBaseTwo(number1);
             List<byte> number2AsBinary = DecimalToBaseTwo(number2);
+
+            switch (op)
+            {
+                case "XOR": result = XOr(ref number1AsBinary, ref number2AsBinary);break;
+                case "OR": result = Or(ref number1AsBinary, ref number2AsBinary);break;
+                case "AND": result = And(ref number1AsBinary, ref number2AsBinary);break;
+                default: break;
+            }
+            return result;
+        }
+
+        public List<byte> XOr(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
+        {
+            List<byte> result = new List<byte>();
 
             AddFrontZeroes(ref number1AsBinary, ref number2AsBinary);
 
             int length = number1AsBinary.Count;
             for (int i = 0; i < length; i++)
             {
-                byte valueToInsert = 
+                byte valueToInsert =
                     (
-                    (1 == number1AsBinary[i] || 1 == number2AsBinary[i]) 
+                    (1 == number1AsBinary[i] || 1 == number2AsBinary[i])
                     &&
                     (!(1 == number1AsBinary[i] && 1 == number2AsBinary[i]))
                     ) ? (byte)1 : (byte)0;
                 result.Insert(i, valueToInsert);
             }
 
+            RemoveLeadingZeroes(result);
+            return result;
+        }
+
+        private void RemoveLeadingZeroes(List<byte> result)
+        {
             for (int i = 0; i < result.Count - 1; i++)
             {
                 if (result[i] == 0)
@@ -112,14 +132,11 @@ namespace BaseTwo
                     break;
                 }
             }
-            return result;
         }
 
-        public List<byte> Or(int number1, int number2)
+        public List<byte> Or(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
-            List<byte> number1AsBinary = DecimalToBaseTwo(number1);
-            List<byte> number2AsBinary = DecimalToBaseTwo(number2);
 
             AddFrontZeroes(ref number1AsBinary, ref number2AsBinary);
 
@@ -152,11 +169,10 @@ namespace BaseTwo
 
 
 
-        public List<byte> And(int number1, int number2)
+        public List<byte> And(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
-            List<byte> number1AsBinary = DecimalToBaseTwo(number1);
-            List<byte> number2AsBinary = DecimalToBaseTwo(number2);
+
             int length = number1AsBinary.Count;
             if (number1AsBinary.Count != number2AsBinary.Count)
             {
