@@ -99,7 +99,7 @@ namespace BaseTwo
         public List<byte> XOr(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
-            AddFrontZeroes(number1AsBinary, number2AsBinary);
+            EqualizeLengthWithFrontZeroes(number1AsBinary, number2AsBinary);
             int length = number1AsBinary.Count;
             for (int i = 0; i < length; i++)
             {
@@ -133,7 +133,7 @@ namespace BaseTwo
         public List<byte> Or(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
-            AddFrontZeroes(number1AsBinary, number2AsBinary);
+            EqualizeLengthWithFrontZeroes(number1AsBinary, number2AsBinary);
             int length = number1AsBinary.Count;
             for (int i = 0; i < length; i++)
             {
@@ -143,7 +143,7 @@ namespace BaseTwo
             return result;
         }
 
-        private void AddFrontZeroes(List<byte> number1AsBinary, List<byte> number2AsBinary)
+        private void EqualizeLengthWithFrontZeroes(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             if (number1AsBinary.Count > number2AsBinary.Count)
             {
