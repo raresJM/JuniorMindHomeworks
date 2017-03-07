@@ -66,10 +66,26 @@ namespace BaseTwo
         public List<byte> Or(int number1, int number2)
         {
             List<byte> result = new List<byte>();
-            result.Insert(0, 1);
-            result.Insert(1, 0);
+            List<byte> number1AsBinary = DecimalToBaseTwo(number1);
+            List<byte> number2AsBinary = DecimalToBaseTwo(number2);
+            int length = number1AsBinary.Count;
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    if (1 == number1AsBinary[i] ||
+                        1 == number2AsBinary[i])
+                    {
+                        result.Insert(i, 1);
+                    }
+                    else
+                    {
+                        result.Insert(i, 0);
+                    }
+                }
+            }
             return result;
         }
+
 
         public List<byte> And(int number1, int number2)
         {
