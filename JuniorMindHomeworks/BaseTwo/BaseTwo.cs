@@ -26,6 +26,12 @@ namespace BaseTwo
             byte[] result = { 0, 1 };
             CollectionAssert.AreEqual(result, Not(2));
         }
+        [TestMethod]
+        public void Test_NOT_0()
+        {
+            byte[] result = {1};
+            CollectionAssert.AreEqual(result, Not(0));
+        }
 
         public List<byte> Not(int number)
         {
