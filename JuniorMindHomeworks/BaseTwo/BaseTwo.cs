@@ -11,8 +11,8 @@ namespace BaseTwo
         [TestMethod]
         public void Test_2_10()
         {
-            byte[] result = {0};
-            CollectionAssert.AreEqual(result, DecimalToBaseTwo(0));
+            byte[] result = {1,0};
+            CollectionAssert.AreEqual(result, DecimalToBaseTwo(2));
         }
         [TestMethod]
         public void Test_3_11()
@@ -23,7 +23,7 @@ namespace BaseTwo
         [TestMethod]
         public void Test_NOT_2()
         {
-            byte[] result = { 0, 1 };
+            byte[] result = { 0, 1};
             CollectionAssert.AreEqual(result, Not(2));
         }
         [TestMethod]
