@@ -14,6 +14,13 @@ namespace BaseTwo
             byte[] result = {1,0};
             CollectionAssert.AreEqual(result, DecimalToBaseTwo(2));
         }
+        [TestMethod]
+        public void Test_3_11()
+        {
+            byte[] result = { 1, 1 };
+            CollectionAssert.AreEqual(result, DecimalToBaseTwo(3));
+        }
+
         public byte[] DecimalToBaseTwo(int number)
         {
             byte[] result = {1,0};
