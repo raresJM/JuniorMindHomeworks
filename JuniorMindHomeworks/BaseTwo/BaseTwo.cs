@@ -23,7 +23,7 @@ namespace BaseTwo
         [TestMethod]
         public void Test_NOT_2()
         {
-            byte[] result = { 0, 1};
+            byte[] result = {0, 1};
             CollectionAssert.AreEqual(result, Not(2));
         }
         [TestMethod]
@@ -31,6 +31,12 @@ namespace BaseTwo
         {
             byte[] result = {1};
             CollectionAssert.AreEqual(result, Not(0));
+        }
+        [TestMethod]
+        public void Test_AND_2_2()
+        {
+            byte[] result = { 1, 0 };
+            CollectionAssert.AreEqual(result, And(2,2));
         }
 
         public List<byte> Not(int number)
