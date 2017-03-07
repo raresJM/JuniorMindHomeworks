@@ -75,6 +75,26 @@ namespace BaseTwo
             List<byte> number1AsBinary = DecimalToBaseTwo(number1);
             List<byte> number2AsBinary = DecimalToBaseTwo(number2);
 
+            AddFrontZeroes(ref number1AsBinary, ref number2AsBinary);
+
+            int length = number1AsBinary.Count;
+            for (int i = 0; i < length; i++)
+            {
+                if (1 == number1AsBinary[i] ||
+                    1 == number2AsBinary[i])
+                {
+                    result.Insert(i, 1);
+                }
+                else
+                {
+                    result.Insert(i, 0);
+                }
+            }
+            return result;
+        }
+
+        private static void AddFrontZeroes(ref List<byte> number1AsBinary, ref List<byte> number2AsBinary)
+        {
             if (number1AsBinary.Count > number2AsBinary.Count)
             {
                 for (int i = 0; i < number1AsBinary.Count - number2AsBinary.Count; i++)
@@ -89,23 +109,8 @@ namespace BaseTwo
                     number1AsBinary.Insert(i, 0);
                 }
             }
-            int length = number1AsBinary.Count;
-            for (int i = 0; i < length; i++)
-            {
-                if (1 == number1AsBinary[i] ||      
-                    1 == number2AsBinary[i])
-                {
-                    result.Insert(i, 1);
-                }
-                else
-                {
-                    result.Insert(i, 0);
-                }
-            }
-            return result;
-    } 
-   
-        
+        }
+
 
 
         public List<byte> And(int number1, int number2)
