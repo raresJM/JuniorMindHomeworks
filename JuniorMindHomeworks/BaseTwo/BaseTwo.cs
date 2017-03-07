@@ -12,7 +12,7 @@ namespace BaseTwo
         public void Test_2_10()
         {
             byte[] result = {1,0};
-            Assert.AreEqual(result, DecimalToBaseTwo(2));
+            CollectionAssert.AreEqual(result, DecimalToBaseTwo(2));
         }
         public byte[] DecimalToBaseTwo(int number)
         {
