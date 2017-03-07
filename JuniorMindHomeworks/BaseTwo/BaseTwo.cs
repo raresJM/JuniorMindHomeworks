@@ -47,7 +47,7 @@ namespace BaseTwo
         [TestMethod]
         public void BaseTwoTest_AND_2_0()
         {
-            byte[] result = { 1, 0 };
+            byte[] result = { 0 };
             CollectionAssert.AreEqual(result, And(2, 0));
         }
 
@@ -79,7 +79,6 @@ namespace BaseTwo
             return result;
         }
 
-
         public List<byte> Not(int number)
         {
             List<byte> result = new List<byte>();
@@ -97,8 +96,6 @@ namespace BaseTwo
             }
             return result;
         }
-
-
 
         public List<byte> DecimalToBaseTwo(int number)
         {
