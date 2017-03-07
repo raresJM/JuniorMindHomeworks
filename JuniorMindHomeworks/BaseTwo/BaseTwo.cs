@@ -50,6 +50,20 @@ namespace BaseTwo
             byte[] result = { 0 };
             CollectionAssert.AreEqual(result, And(2, 0));
         }
+        [TestMethod]
+        public void BaseTwoTest_OR_2_2()
+        {
+            byte[] result = { 1, 0 };
+            CollectionAssert.AreEqual(result, Or(2, 2));
+        }
+
+        public List<byte> Or(int number1, int number2)
+        {
+            List<byte> result = new List<byte>();
+            result.Insert(0, 1);
+            result.Insert(1, 0);
+            return result;
+        }
 
         public List<byte> And(int number1, int number2)
         {
