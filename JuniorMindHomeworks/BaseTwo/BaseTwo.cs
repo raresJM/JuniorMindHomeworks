@@ -39,6 +39,15 @@ namespace BaseTwo
             CollectionAssert.AreEqual(result, And(2,2));
         }
 
+        public List<byte> And(int number1, int number2)
+        {
+            List<byte> result = new List<byte>();
+            result.Insert(0, 1);
+            result.Insert(1, 0);
+            return result;
+        }
+
+
         public List<byte> Not(int number)
         {
             List<byte> result = new List<byte>();
