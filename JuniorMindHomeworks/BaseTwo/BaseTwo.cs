@@ -38,6 +38,12 @@ namespace BaseTwo
             byte[] result = { 1, 0 };
             CollectionAssert.AreEqual(result, And(2,2));
         }
+        [TestMethod]
+        public void Test_AND_2_4()
+        {
+            byte[] result = { 0, 0, 0 };
+            CollectionAssert.AreEqual(result, And(2, 4));
+        }
 
         public List<byte> And(int number1, int number2)
         {
