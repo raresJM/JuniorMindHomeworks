@@ -12,13 +12,13 @@ namespace BaseTwo
         public void BaseTwoTest_2_10()
         {
             byte[] result = {1,0};
-            CollectionAssert.AreEqual(result, DecimalToBaseTwo(2));
+            CollectionAssert.AreEqual(result, ReversedDecimalToBaseTwo(2));
         }
         [TestMethod]
         public void BaseTwoTest_3_11()
         {
             byte[] result = {1,1};
-            CollectionAssert.AreEqual(result, DecimalToBaseTwo(3));
+            CollectionAssert.AreEqual(result, ReversedDecimalToBaseTwo(3));
         }
         [TestMethod]
         public void BaseTwoTest_NOT_2()
@@ -81,11 +81,15 @@ namespace BaseTwo
             CollectionAssert.AreEqual(result, BinaryOperations(2, "XOR", 2));
         }
 
+
+
+
+
         public List<byte> BinaryOperations(int number1, String op, int number2)
         {
             List<byte> result = new List<byte>();
-            List<byte> number1AsBinary = DecimalToBaseTwo(number1);
-            List<byte> number2AsBinary = DecimalToBaseTwo(number2);
+            List<byte> number1AsBinary = ReversedDecimalToBaseTwo(number1);
+            List<byte> number2AsBinary = ReversedDecimalToBaseTwo(number2);
             switch (op)
             {
                 case "XOR": result = XOr(number1AsBinary, number2AsBinary);break;
@@ -183,7 +187,7 @@ namespace BaseTwo
         private List<byte> Not(int number)
         {
             List<byte> result = new List<byte>();
-            result = DecimalToBaseTwo(number);
+            result = ReversedDecimalToBaseTwo(number);
             for (int i = 0; i < result.Count; i++)
             {
                 if (result[i] == 0)
@@ -198,7 +202,7 @@ namespace BaseTwo
             return result;
         }
 
-        private List<byte> DecimalToBaseTwo(int number)
+        private List<byte> ReversedDecimalToBaseTwo(int number)
         {
             List<byte> result = new List<byte>();
             if (number == 0)
@@ -212,6 +216,7 @@ namespace BaseTwo
                     number = number / 2;
                 }
             }
+            result.Reverse();
             return result;  
         }
     }
