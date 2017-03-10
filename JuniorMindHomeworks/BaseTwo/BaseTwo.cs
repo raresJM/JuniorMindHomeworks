@@ -121,12 +121,7 @@ namespace BaseTwo
                 result.Insert(i, valueToInsert);
             }
             result.Reverse();
-            RemoveLeadingZeroes(result);
-            foreach (Byte b in result)
-            {
-                Console.Write(b);
-            }
-            
+            RemoveLeadingZeroes(result);            
             return result;
         }
 
