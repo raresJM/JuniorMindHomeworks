@@ -83,20 +83,10 @@ namespace BaseTwo
 
         public List<byte> BinaryOperations(int number1, String op, int number2)
         {
-            List<byte> result = new List<byte>();
-            List<byte> number1AsBinary = DecimalToBaseTwo(number1);
-            List<byte> number2AsBinary = DecimalToBaseTwo(number2);
-            switch (op)
-            {
-                case "XOR": result = XOr(number1,number2);break;
-                case "OR": result = Or(number1AsBinary, number2AsBinary);break;
-                case "AND": result = And(number1AsBinary, number2AsBinary);break;
-                default: break;
-            }
-            return result;
+            return Operation(number1, op, number2);
         }
 
-        private List<byte> XOr(int number1, int number2)
+        private List<byte> Operation(int number1, String operation, int number2)
         {
             List<byte> result = new List<byte>();
             List<byte> number1BinaryReversed = DecimalToBaseTwo(number1);
@@ -114,9 +104,7 @@ namespace BaseTwo
             {
                 byte valueToInsert =
                     (
-                    (1 == number1BinaryReversed[i] || 1 == number2BinaryReversed[i])
-                    &&
-                    (!(1 == number1BinaryReversed[i] && 1 == number2BinaryReversed[i]))
+                    BinaryOperatorCondition(number1BinaryReversed[i],operation, number2BinaryReversed[i])
                     ) ? (byte)1 : (byte)0;
                 result.Insert(i, valueToInsert);
             }
@@ -140,6 +128,23 @@ namespace BaseTwo
             }
         }
 
+        private Boolean BinaryOperatorCondition(int number1, String op, int number2)
+        {
+            Boolean result = false;
+            switch (op)
+            {
+                case "XOR": result = 
+                        (1 == number1 || 1 == number2)
+                        &&
+                        (!(1 == number1 && 1 == number2));break;
+                case "OR":  result =
+                        (1 == number1 || 1 == number2); break;
+                case "AND": result =
+                        (1 == number1 && 1 == number2); break;
+                default: break;
+            }
+            return result;
+        }
         private List<byte> Or(List<byte> number1AsBinary, List<byte> number2AsBinary)
         {
             List<byte> result = new List<byte>();
