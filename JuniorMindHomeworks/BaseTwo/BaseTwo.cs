@@ -12,13 +12,13 @@ namespace BaseTwo
         public void BaseTwoTest_2_10()
         {
             byte[] result = {1,0};
-            CollectionAssert.AreEqual(result, ReversedDecimalToBaseTwo(2));
+            CollectionAssert.AreEqual(result, DecimalToBaseTwo(2));
         }
         [TestMethod]
         public void BaseTwoTest_3_11()
         {
             byte[] result = {1,1};
-            CollectionAssert.AreEqual(result, ReversedDecimalToBaseTwo(3));
+            CollectionAssert.AreEqual(result, DecimalToBaseTwo(3));
         }
         [TestMethod]
         public void BaseTwoTest_NOT_2()
@@ -81,18 +81,14 @@ namespace BaseTwo
             CollectionAssert.AreEqual(result, BinaryOperations(2, "XOR", 2));
         }
 
-
-
-
-
         public List<byte> BinaryOperations(int number1, String op, int number2)
         {
             List<byte> result = new List<byte>();
-            List<byte> number1AsBinary = ReversedDecimalToBaseTwo(number1);
-            List<byte> number2AsBinary = ReversedDecimalToBaseTwo(number2);
+            List<byte> number1AsBinary = DecimalToBaseTwo(number1);
+            List<byte> number2AsBinary = DecimalToBaseTwo(number2);
             switch (op)
             {
-                case "XOR": result = XOr(number1AsBinary, number2AsBinary);break;
+                case "XOR": result = XOr(number1,number2);break;
                 case "OR": result = Or(number1AsBinary, number2AsBinary);break;
                 case "AND": result = And(number1AsBinary, number2AsBinary);break;
                 default: break;
@@ -100,22 +96,37 @@ namespace BaseTwo
             return result;
         }
 
-        private List<byte> XOr(List<byte> number1AsBinary, List<byte> number2AsBinary)
+        private List<byte> XOr(int number1, int number2)
         {
             List<byte> result = new List<byte>();
-            EqualizeLengthWithFrontZeroes(number1AsBinary, number2AsBinary);
-            int length = number1AsBinary.Count;
-            for (int i = 0; i < length; i++)
+            List<byte> number1BinaryReversed = DecimalToBaseTwo(number1);
+            number1BinaryReversed.Reverse();
+            List<byte> number2BinaryReversed = DecimalToBaseTwo(number2);
+            number2BinaryReversed.Reverse();
+
+            int maxLength = Math.Max
+                (
+                number1BinaryReversed.Count, 
+                number2BinaryReversed.Count
+                );
+
+            for (int i = 0; i < maxLength; i++)
             {
                 byte valueToInsert =
                     (
-                    (1 == number1AsBinary[i] || 1 == number2AsBinary[i])
+                    (1 == number1BinaryReversed[i] || 1 == number2BinaryReversed[i])
                     &&
-                    (!(1 == number1AsBinary[i] && 1 == number2AsBinary[i]))
+                    (!(1 == number1BinaryReversed[i] && 1 == number2BinaryReversed[i]))
                     ) ? (byte)1 : (byte)0;
                 result.Insert(i, valueToInsert);
             }
+            result.Reverse();
             RemoveLeadingZeroes(result);
+            foreach (Byte b in result)
+            {
+                Console.Write(b);
+            }
+            
             return result;
         }
 
@@ -187,7 +198,7 @@ namespace BaseTwo
         private List<byte> Not(int number)
         {
             List<byte> result = new List<byte>();
-            result = ReversedDecimalToBaseTwo(number);
+            result = DecimalToBaseTwo(number);
             for (int i = 0; i < result.Count; i++)
             {
                 if (result[i] == 0)
@@ -202,7 +213,7 @@ namespace BaseTwo
             return result;
         }
 
-        private List<byte> ReversedDecimalToBaseTwo(int number)
+        private List<byte> DecimalToBaseTwo(int number)
         {
             List<byte> result = new List<byte>();
             if (number == 0)
@@ -216,7 +227,6 @@ namespace BaseTwo
                     number = number / 2;
                 }
             }
-            result.Reverse();
             return result;  
         }
     }
