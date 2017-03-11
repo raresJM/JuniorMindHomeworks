@@ -99,8 +99,8 @@ namespace BaseTwo
 
             for (int i = 0; i < maxLength; i++)
             {
-                nr1 = NormalizeLength(number1BinaryReversed, i);
-                nr2 = NormalizeLength(number2BinaryReversed, i);
+                nr1 = AddZeroIfCase(number1BinaryReversed, i);
+                nr2 = AddZeroIfCase(number2BinaryReversed, i);
 
                 byte valueToInsert =
                     (
@@ -113,7 +113,7 @@ namespace BaseTwo
             return result;
         }
 
-        private int NormalizeLength(List<byte> numberBinaryReversed, int i)
+        private int AddZeroIfCase(List<byte> numberBinaryReversed, int i)
         {
             int nr;
             if (i >= numberBinaryReversed.Count)
