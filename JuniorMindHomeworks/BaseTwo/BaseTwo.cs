@@ -81,11 +81,6 @@ namespace BaseTwo
             CollectionAssert.AreEqual(result, BinaryOperations(2, "XOR", 2));
         }
 
-        public List<byte> BinaryOperations(int number1, String op, int number2)
-        {
-            return Operation(number1, op, number2);
-        }
-
         private List<byte> Operation(int number1, String operation, int number2)
         {
             List<byte> result = new List<byte>();
@@ -133,13 +128,16 @@ namespace BaseTwo
             Boolean result = false;
             switch (op)
             {
-                case "XOR": result = 
+                case "XOR":
+                    result = 
                         (1 == number1 || 1 == number2)
                         &&
                         (!(1 == number1 && 1 == number2));break;
-                case "OR":  result =
+                case "OR":
+                    result =
                         (1 == number1 || 1 == number2); break;
-                case "AND": result =
+                case "AND":
+                    result =
                         (1 == number1 && 1 == number2); break;
                 default: break;
             }
