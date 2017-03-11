@@ -99,7 +99,7 @@ namespace BaseTwo
             {
                 byte valueToInsert =
                     (
-                    BinaryOperator(number1BinaryReversed[i],operation, number2BinaryReversed[i])
+                    BinaryExpression(number1BinaryReversed[i],operation,number2BinaryReversed[i])
                     ) ? (byte)1 : (byte)0;
                 result.Insert(i, valueToInsert);
             }
@@ -123,7 +123,7 @@ namespace BaseTwo
             }
         }
 
-        private Boolean BinaryOperator(int number1, String op, int number2)
+        private Boolean BinaryExpression(int number1, String op, int number2)
         {
             Boolean result = false;
             switch (op)
