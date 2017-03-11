@@ -145,55 +145,6 @@ namespace BaseTwo
             }
             return result;
         }
-        private List<byte> Or(List<byte> number1AsBinary, List<byte> number2AsBinary)
-        {
-            List<byte> result = new List<byte>();
-            EqualizeLengthWithFrontZeroes(number1AsBinary, number2AsBinary);
-            int length = number1AsBinary.Count;
-            for (int i = 0; i < length; i++)
-            {
-                byte valueToInsert = (1 == number1AsBinary[i] || 1 == number2AsBinary[i]) ? (byte)1 : (byte)0;
-                result.Insert(i, valueToInsert); 
-            }
-            return result;
-        }
-
-        private void EqualizeLengthWithFrontZeroes(List<byte> number1AsBinary, List<byte> number2AsBinary)
-        {
-            if (number1AsBinary.Count > number2AsBinary.Count)
-            {
-                for (int i = 0; i < number1AsBinary.Count - number2AsBinary.Count; i++)
-                {
-                    number2AsBinary.Insert(i, 0);
-                }
-            }
-            else if (number2AsBinary.Count > number1AsBinary.Count)
-            {
-                for (int i = 0; i < number2AsBinary.Count - number1AsBinary.Count; i++)
-                {
-                    number1AsBinary.Insert(i, 0);
-                }
-            }
-        }
-
-        private List<byte> And(List<byte> number1AsBinary, List<byte> number2AsBinary)
-        {
-            List<byte> result = new List<byte>();
-            int length = number1AsBinary.Count;
-            if (number1AsBinary.Count != number2AsBinary.Count)
-            {
-                result.Add(0);
-            }
-            else
-            {
-                for (int i = 0; i < length; i++)
-                {
-                    byte valueToInsert = (1 == number1AsBinary[i] && 1 == number2AsBinary[i]) ? (byte)1 : (byte)0;
-                    result.Insert(i, valueToInsert);
-                }
-            }
-            return result;
-        }
 
         private List<byte> Not(int number)
         {
