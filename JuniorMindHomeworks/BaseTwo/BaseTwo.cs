@@ -100,17 +100,7 @@ namespace BaseTwo
             for (int i = 0; i < maxLength; i++)
             {
                 nr1 = NormalizeLength(number1BinaryReversed, i);
-
-                if (i >= number2BinaryReversed.Count)
-                {
-                    nr2 = 0;
-                }
-                else
-                {
-                    nr2 = number2BinaryReversed[i];
-                }
-
-
+                nr2 = NormalizeLength(number2BinaryReversed, i);
 
                 byte valueToInsert =
                     (
@@ -119,28 +109,29 @@ namespace BaseTwo
                 result.Insert(i, valueToInsert);
             }
             result.Reverse();
-            RemoveLeadingZeroes(result);            
+            RemoveLeadingZeroes(result);
             return result;
         }
 
-        private static int NormalizeLength(List<byte> number1BinaryReversed, int i)
+        private int NormalizeLength(List<byte> numberBinaryReversed, int i)
         {
-            int nr1;
-            if (i >= number1BinaryReversed.Count)
+            int nr;
+            if (i >= numberBinaryReversed.Count)
             {
-                nr1 = 0;
+                nr = 0;
             }
             else
             {
-                nr1 = number1BinaryReversed[i];
+                nr = numberBinaryReversed[i];
             }
 
-            return nr1;
+            return nr;
         }
 
         private void RemoveLeadingZeroes(List<byte> result)
         {
-            for (int i = 0; i < result.Count - 1; i++)
+            int i = 0;
+            while (result.Count>1)
             {
                 if (result[i] == 0)
                 {
