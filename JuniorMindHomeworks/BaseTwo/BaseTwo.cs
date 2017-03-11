@@ -36,53 +36,55 @@ namespace BaseTwo
         public void BaseTwoTest_AND_2_2()
         {
             byte[] result = {1, 0};
-            CollectionAssert.AreEqual(result, BinaryOperations(2,"AND",2));
+            CollectionAssert.AreEqual(result, Operation(2,"AND",2));
         }
         [TestMethod]
         public void BaseTwoTest_AND_2_4()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, BinaryOperations(2, "AND", 4));
+            CollectionAssert.AreEqual(result, Operation(2, "AND", 4));
         }
         [TestMethod]
         public void BaseTwoTest_AND_2_0()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, BinaryOperations(2, "AND", 0));
+            CollectionAssert.AreEqual(result, Operation(2, "AND", 0));
         }
         [TestMethod]
         public void BaseTwoTest_OR_2_2()
         {
             byte[] result = { 1, 0 };
-            CollectionAssert.AreEqual(result, BinaryOperations(2, "OR", 2));
+            CollectionAssert.AreEqual(result, Operation(2, "OR", 2));
         }
         [TestMethod]
         public void BaseTwoTest_OR_2_3()
         {
             byte[] result = { 1, 1 };
-            CollectionAssert.AreEqual(result, BinaryOperations(2, "OR", 3));
+            CollectionAssert.AreEqual(result, Operation(2, "OR", 3));
         }
         [TestMethod]
         public void BaseTwoTest_OR_2_0()
         {
             byte[] result = { 1, 0 };
-            CollectionAssert.AreEqual(result, BinaryOperations(2, "OR", 0));
+            CollectionAssert.AreEqual(result, Operation(2, "OR", 0));
         }
         [TestMethod]
         public void BaseTwoTest_XOR_2_3()
         {
             byte[] result = { 1 };
-            CollectionAssert.AreEqual(result, BinaryOperations(2, "XOR", 3));
+            CollectionAssert.AreEqual(result, Operation(2, "XOR", 3));
         }
         [TestMethod]
         public void BaseTwoTest_XOR_2_2()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, BinaryOperations(2, "XOR", 2));
+            CollectionAssert.AreEqual(result, Operation(2, "XOR", 2));
         }
 
         private List<byte> Operation(int number1, String operation, int number2)
         {
+            int nr1 = 0;
+            int nr2 = 0;
             List<byte> result = new List<byte>();
             List<byte> number1BinaryReversed = DecimalToBaseTwo(number1);
             number1BinaryReversed.Reverse();
@@ -97,15 +99,43 @@ namespace BaseTwo
 
             for (int i = 0; i < maxLength; i++)
             {
+                nr1 = NormalizeLength(number1BinaryReversed, i);
+
+                if (i >= number2BinaryReversed.Count)
+                {
+                    nr2 = 0;
+                }
+                else
+                {
+                    nr2 = number2BinaryReversed[i];
+                }
+
+
+
                 byte valueToInsert =
                     (
-                    BinaryExpression(number1BinaryReversed[i],operation,number2BinaryReversed[i])
+                    BinaryExpression(nr1, operation, nr2)
                     ) ? (byte)1 : (byte)0;
                 result.Insert(i, valueToInsert);
             }
             result.Reverse();
             RemoveLeadingZeroes(result);            
             return result;
+        }
+
+        private static int NormalizeLength(List<byte> number1BinaryReversed, int i)
+        {
+            int nr1;
+            if (i >= number1BinaryReversed.Count)
+            {
+                nr1 = 0;
+            }
+            else
+            {
+                nr1 = number1BinaryReversed[i];
+            }
+
+            return nr1;
         }
 
         private void RemoveLeadingZeroes(List<byte> result)
