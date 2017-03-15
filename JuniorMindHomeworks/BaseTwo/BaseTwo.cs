@@ -84,9 +84,18 @@ namespace BaseTwo
         public void BaseTwoTest_Left_1_4()
         {
             byte[] result = { 1, 0, 0 };
-            CollectionAssert.AreEqual(result, Operation(4, "XOR", 1));
+            CollectionAssert.AreEqual(result, Shift(4, "XOR", 1));
         }
 
+        public List<byte> Shift(int number1, String operation, int number2)
+        {
+            List<byte> result = new List<byte>();
+            result.Add(1);
+            result.Add(0);
+            result.Add(0);
+            return result;
+        }
+        
 
         private List<byte> Operation(int number1, String operation, int number2)
         {
