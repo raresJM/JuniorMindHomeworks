@@ -80,6 +80,13 @@ namespace BaseTwo
             byte[] result = { 0 };
             CollectionAssert.AreEqual(result, Operation(2, "XOR", 2));
         }
+        [TestMethod]
+        public void BaseTwoTest_Left_1_4()
+        {
+            byte[] result = { 1, 0, 0 };
+            CollectionAssert.AreEqual(result, Operation(4, "XOR", 1));
+        }
+
 
         private List<byte> Operation(int number1, String operation, int number2)
         {
