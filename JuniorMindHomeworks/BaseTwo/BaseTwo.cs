@@ -140,6 +140,11 @@ namespace BaseTwo
         {
             Assert.AreEqual(true, ComparisonOperation(1, ">", 0));
         }
+        [TestMethod]
+        public void BaseTwoTest_4_Greater_Than_2()
+        {
+            Assert.AreEqual(true, ComparisonOperation(4, ">", 2));
+        }
 
 
         public bool ComparisonOperation(int number1, String operation, int number2)
