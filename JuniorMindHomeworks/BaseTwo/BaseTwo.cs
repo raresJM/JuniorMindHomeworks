@@ -120,32 +120,68 @@ namespace BaseTwo
         {
             Assert.AreEqual(true, ComparisonOperation(2, "<", 3));
         }
+        [TestMethod]
+        public void BaseTwoTest_3_Greater_Than_2()
+        {
+            Assert.AreEqual(true, ComparisonOperation(3, ">", 2));
+        }
 
 
 
         public bool ComparisonOperation(int number1, String operation, int number2)
         {
-            bool result = false;
+            bool boolResult = false;
+            int intResult= 0;
             List<byte> number1AsBinary = DecimalToBaseTwo(number1);
             List<byte> number2AsBinary = DecimalToBaseTwo(number2);
             int number1Length = number1AsBinary.Count;
             int number2Length = number2AsBinary.Count;
-            if (number1Length != number2Length)
-            {
-                result = number1Length < number2Length;
-            }
-            else
-            {
-                for (int i = 0; i < number1Length; i++)
+
+                if (number1Length != number2Length)
                 {
-                    if (number1AsBinary[i] != number2AsBinary[i])
+                    if (number1Length < number2Length)
                     {
-                        result = number1AsBinary[i] < number2AsBinary[i];
-                        break;
+                        intResult = -1;
+                    }
+                    else
+                    {
+                        intResult = 1;
                     }
                 }
+                else
+                {
+                    for (int i = 0; i < number1Length; i++)
+                    {
+                        intResult = 0;
+                        if (number1AsBinary[i] != number2AsBinary[i])
+                        {
+                            if (number1AsBinary[i] < number2AsBinary[i])
+                            {
+                                intResult = -1;
+                                break;
+                            }
+                            else
+                            {
+                                intResult = 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+            switch (operation)
+            {
+                case "<":
+                    boolResult = (intResult == -1);
+                    break;
+                case ">":
+                    boolResult = (intResult == 1);
+                    break;
+                case "==":
+                    boolResult = (intResult == 0);
+                    break;
             }
-            return result;
+            return boolResult;
         }
 
         public List<byte> ShiftOperation(int number, String operation, int bitsToShift)
