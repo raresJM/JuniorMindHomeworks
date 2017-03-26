@@ -115,6 +115,11 @@ namespace BaseTwo
         {
             Assert.AreEqual(true, ComparisonOperation(1, "<", 2));
         }
+        [TestMethod]
+        public void BaseTwoTest_2_Less_Than_3()
+        {
+            Assert.AreEqual(true, ComparisonOperation(2, "<", 3));
+        }
 
 
 
