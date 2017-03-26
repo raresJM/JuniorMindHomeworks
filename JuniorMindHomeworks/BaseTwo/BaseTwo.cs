@@ -110,10 +110,29 @@ namespace BaseTwo
         {
             Assert.AreEqual(true,ComparisonOperation(2,"<",4));
         }
+        [TestMethod]
+        public void BaseTwoTest_1_Less_Than_2()
+        {
+            Assert.AreEqual(true, ComparisonOperation(1, "<", 2));
+        }
+
+
 
         public bool ComparisonOperation(int number1, String operation, int number2)
         {
-            return true;
+            bool result = false;
+            List<byte> number1AsBinary = DecimalToBaseTwo(number1);
+            List<byte> number2AsBinary = DecimalToBaseTwo(number2);
+            int number1Length = number1AsBinary.Count;
+            int number2Length = number2AsBinary.Count;
+            if (number1Length != number2Length)
+            {
+                result = number1Length < number2Length;
+            }
+
+
+
+            return result;
         }
 
         public List<byte> ShiftOperation(int number, String operation, int bitsToShift)
