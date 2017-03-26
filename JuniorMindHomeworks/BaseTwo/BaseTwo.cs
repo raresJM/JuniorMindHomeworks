@@ -36,77 +36,77 @@ namespace BaseTwo
         public void BaseTwoTest_AND_2_2()
         {
             byte[] result = {1, 0};
-            CollectionAssert.AreEqual(result, Operation(2,"AND",2));
+            CollectionAssert.AreEqual(result, BitWiseOperation(2,"AND",2));
         }
         [TestMethod]
         public void BaseTwoTest_AND_2_4()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, Operation(2, "AND", 4));
+            CollectionAssert.AreEqual(result, BitWiseOperation(2, "AND", 4));
         }
         [TestMethod]
         public void BaseTwoTest_AND_2_0()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, Operation(2, "AND", 0));
+            CollectionAssert.AreEqual(result, BitWiseOperation(2, "AND", 0));
         }
         [TestMethod]
         public void BaseTwoTest_OR_2_2()
         {
             byte[] result = { 1, 0 };
-            CollectionAssert.AreEqual(result, Operation(2, "OR", 2));
+            CollectionAssert.AreEqual(result, BitWiseOperation(2, "OR", 2));
         }
         [TestMethod]
         public void BaseTwoTest_OR_2_3()
         {
             byte[] result = { 1, 1 };
-            CollectionAssert.AreEqual(result, Operation(2, "OR", 3));
+            CollectionAssert.AreEqual(result, BitWiseOperation(2, "OR", 3));
         }
         [TestMethod]
         public void BaseTwoTest_OR_2_0()
         {
             byte[] result = { 1, 0 };
-            CollectionAssert.AreEqual(result, Operation(2, "OR", 0));
+            CollectionAssert.AreEqual(result, BitWiseOperation(2, "OR", 0));
         }
         [TestMethod]
         public void BaseTwoTest_XOR_2_3()
         {
             byte[] result = { 1 };
-            CollectionAssert.AreEqual(result, Operation(2, "XOR", 3));
+            CollectionAssert.AreEqual(result, BitWiseOperation(2, "XOR", 3));
         }
         [TestMethod]
         public void BaseTwoTest_XOR_2_2()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, Operation(2, "XOR", 2));
+            CollectionAssert.AreEqual(result, BitWiseOperation(2, "XOR", 2));
         }
         [TestMethod]
         public void BaseTwoTest_Left_2_1()
         {
             byte[] result = { 1, 0, 0 };
-            CollectionAssert.AreEqual(result, Shift(2, "<<", 1));
+            CollectionAssert.AreEqual(result, ShiftOperation(2, "<<", 1));
         }
         [TestMethod]
         public void BaseTwoTest_Left_4_1()
         {
             byte[] result = { 1, 0, 0, 0 };
-            CollectionAssert.AreEqual(result, Shift(4, "<<", 1));
+            CollectionAssert.AreEqual(result, ShiftOperation(4, "<<", 1));
         }
         [TestMethod]
         public void BaseTwoTest_Right_4_1()
         {
             byte[] result = { 1, 0 };
-            CollectionAssert.AreEqual(result, Shift(4, ">>", 1));
+            CollectionAssert.AreEqual(result, ShiftOperation(4, ">>", 1));
         }
         [TestMethod]
         public void BaseTwoTest_Right_4_4()
         {
             byte[] result = { 0 };
-            CollectionAssert.AreEqual(result, Shift(4, ">>", 4));
+            CollectionAssert.AreEqual(result, ShiftOperation(4, ">>", 4));
         }
 
 
-        public List<byte> Shift(int number, String operation, int bitsToShift)
+        public List<byte> ShiftOperation(int number, String operation, int bitsToShift)
         {
             List<byte> result = new List<byte>();
             List<byte> numberAsBinary = DecimalToBaseTwo(number);
@@ -133,13 +133,12 @@ namespace BaseTwo
                     counter--;
                 }
             }
-
             result = numberAsBinary;
             return result;
         }
 
 
-        private List<byte> Operation(int number1, String operation, int number2)
+        private List<byte> BitWiseOperation(int number1, String operation, int number2)
         {
             int nr1 = 0;
             int nr2 = 0;
