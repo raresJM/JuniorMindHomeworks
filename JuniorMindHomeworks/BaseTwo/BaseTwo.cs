@@ -98,6 +98,12 @@ namespace BaseTwo
             byte[] result = { 1, 0 };
             CollectionAssert.AreEqual(result, Shift(4, ">>", 1));
         }
+        [TestMethod]
+        public void BaseTwoTest_Right_4_4()
+        {
+            byte[] result = { 0 };
+            CollectionAssert.AreEqual(result, Shift(4, ">>", 4));
+        }
 
 
         public List<byte> Shift(int number, String operation, int bitsToShift)
