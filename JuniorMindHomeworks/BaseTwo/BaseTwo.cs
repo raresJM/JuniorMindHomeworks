@@ -134,6 +134,17 @@ namespace BaseTwo
             {
                 result = number1Length < number2Length;
             }
+            else
+            {
+                for (int i = 0; i < number1Length; i++)
+                {
+                    if (number1AsBinary[i] != number2AsBinary[i])
+                    {
+                        result = number1AsBinary[i] < number2AsBinary[i];
+                        break;
+                    }
+                }
+            }
 
 
 
