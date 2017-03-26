@@ -146,7 +146,6 @@ namespace BaseTwo
             Assert.AreEqual(true, ComparisonOperation(4, ">", 2));
         }
 
-
         public bool ComparisonOperation(int number1, String operation, int number2)
         {
             bool boolResult = false;
@@ -233,7 +232,6 @@ namespace BaseTwo
             result = numberAsBinary;
             return result;
         }
-
 
         private List<byte> BitWiseOperation(int number1, String operation, int number2)
         {
