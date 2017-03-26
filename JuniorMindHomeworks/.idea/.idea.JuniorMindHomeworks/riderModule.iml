@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../Anagrams" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../BaseTwo" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Excel" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Loto" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Anagrams/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Anagrams/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../BaseTwo/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../BaseTwo/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Excel/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Excel/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Loto/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Loto/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../packages" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

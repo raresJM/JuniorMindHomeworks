@@ -84,25 +84,29 @@ namespace BaseTwo
         public void BaseTwoTest_Left_2_1()
         {
             byte[] result = { 1, 0, 0 };
-            CollectionAssert.AreEqual(result, Shift(2, "XOR", 1));
+            CollectionAssert.AreEqual(result, Shift(2, "<<", 1));
         }
         [TestMethod]
         public void BaseTwoTest_Left_4_1()
         {
             byte[] result = { 1, 0, 0, 0 };
-            CollectionAssert.AreEqual(result, Shift(4, "XOR", 1));
+            CollectionAssert.AreEqual(result, Shift(4, "<<", 1));
         }
 
 
-        public List<byte> Shift(int number1, String operation, int number2)
+        public List<byte> Shift(int number, String operation, int bitsToShift)
         {
             List<byte> result = new List<byte>();
-            result.Add(1);
-            result.Add(0);
-            result.Add(0);
+            List<byte> numberAsBinary = DecimalToBaseTwo(number);
+            for (int i = 0; i < bitsToShift; i++)
+            {
+                numberAsBinary.Add(0);
+            }
+            result = numberAsBinary;
+           
             return result;
         }
-        
+
 
         private List<byte> Operation(int number1, String operation, int number2)
         {
@@ -116,7 +120,7 @@ namespace BaseTwo
 
             int maxLength = Math.Max
                 (
-                number1BinaryReversed.Count, 
+                number1BinaryReversed.Count,
                 number2BinaryReversed.Count
                 );
 
