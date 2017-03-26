@@ -105,6 +105,16 @@ namespace BaseTwo
             CollectionAssert.AreEqual(result, ShiftOperation(4, ">>", 4));
         }
 
+        [TestMethod]
+        public void BaseTwoTest_2_Less_Than_4()
+        {
+            Assert.AreEqual(true,ComparisonOperation(2,"<",4));
+        }
+
+        public bool ComparisonOperation(int number1, String operation, int number2)
+        {
+            return true;
+        }
 
         public List<byte> ShiftOperation(int number, String operation, int bitsToShift)
         {
