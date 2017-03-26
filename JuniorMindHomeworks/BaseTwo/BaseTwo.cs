@@ -92,6 +92,12 @@ namespace BaseTwo
             byte[] result = { 1, 0, 0, 0 };
             CollectionAssert.AreEqual(result, Shift(4, "<<", 1));
         }
+        [TestMethod]
+        public void BaseTwoTest_Right_4_1()
+        {
+            byte[] result = { 1, 0 };
+            CollectionAssert.AreEqual(result, Shift(4, ">>", 1));
+        }
 
 
         public List<byte> Shift(int number, String operation, int bitsToShift)
@@ -103,7 +109,6 @@ namespace BaseTwo
                 numberAsBinary.Add(0);
             }
             result = numberAsBinary;
-           
             return result;
         }
 
