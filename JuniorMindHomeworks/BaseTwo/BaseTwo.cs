@@ -121,9 +121,14 @@ namespace BaseTwo
             else if (operation.Equals(">>"))
             {
                 int counter = bitsToShift;
-                while (counter > 0)
+                while (counter > 0 && numberAsBinary.Count>0)
                 {
                     int tail = numberAsBinary.Count-1;
+                    if (tail == 0)
+                    {
+                        numberAsBinary[tail] = 0;
+                        break;
+                    }
                     numberAsBinary.RemoveAt(tail);
                     counter--;
                 }
