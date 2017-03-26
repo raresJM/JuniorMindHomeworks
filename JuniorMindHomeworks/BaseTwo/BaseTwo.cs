@@ -104,10 +104,25 @@ namespace BaseTwo
         {
             List<byte> result = new List<byte>();
             List<byte> numberAsBinary = DecimalToBaseTwo(number);
-            for (int i = 0; i < bitsToShift; i++)
+            if (operation.Equals("<<"))
             {
-                numberAsBinary.Add(0);
+                for (int i = 0; i < bitsToShift; i++)
+                {
+                    numberAsBinary.Add(0);
+                }
+                
             }
+            else if (operation.Equals(">>"))
+            {
+                int counter = bitsToShift;
+                while (counter > 0)
+                {
+                    int tail = numberAsBinary.Count-1;
+                    numberAsBinary.RemoveAt(tail);
+                    counter--;
+                }
+            }
+
             result = numberAsBinary;
             return result;
         }
