@@ -145,9 +145,6 @@ namespace BaseTwo
                     }
                 }
             }
-
-
-
             return result;
         }
 
